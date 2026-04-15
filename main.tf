@@ -2,7 +2,6 @@
 
 terraform {
     required_version = ">= 1.11"
-    lockfile_version = true
 
     required_providers {
         aws = {
