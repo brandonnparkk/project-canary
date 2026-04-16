@@ -18,6 +18,7 @@ resource "aws_instance" "stable_web_server_main" {
     subnet_id = aws_subnet.private_subnet_1a.id
     vpc_security_group_ids = [aws_security_group.app_security_group.id]
     key_name = aws_key_pair.bastion_host_key_pair.key_name
+    iam_instance_profile = aws_iam_instance_profile.app_ec2_profile.name
     user_data = <<-EOF
               #!/bin/bash
               mkdir -p /var/www/html
@@ -37,6 +38,7 @@ resource "aws_instance" "stable_web_server_backup" {
     subnet_id = aws_subnet.private_subnet_1b.id
     vpc_security_group_ids = [aws_security_group.app_security_group.id]
     key_name = aws_key_pair.bastion_host_key_pair.key_name
+    iam_instance_profile = aws_iam_instance_profile.app_ec2_profile.name
     user_data = <<-EOF
               #!/bin/bash
               mkdir -p /var/www/html
@@ -56,6 +58,7 @@ resource "aws_instance" "canary_server" {
     subnet_id = aws_subnet.private_subnet_1a.id
     vpc_security_group_ids = [aws_security_group.app_security_group.id]
     key_name = aws_key_pair.bastion_host_key_pair.key_name
+    iam_instance_profile = aws_iam_instance_profile.app_ec2_profile.name
     user_data = <<-EOF
               #!/bin/bash
               mkdir -p /var/www/html
