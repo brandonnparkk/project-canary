@@ -1,4 +1,4 @@
 # local values, name prefixes, tags
 locals {
-    name_prefix = "aws-project-canary"
+  name_prefix = "aws-project-canary"
 }
